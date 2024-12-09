@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EquiGraspFlow</title>
+    <style>
+      .multi{column-count: 2; text-align: center;}
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+
+  <body>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop"> 
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              
+              <!-- Title. -->
+              <h1 class="title is-2 publication-title">EquiGraspFlow: SE(3)-Equivariant <br> 6-DoF Grasp Pose Generative Flows</h1>
+              <p class="subtitle">2024 Conference on Robot Learning (CoRL 2024)</p>
+              
+              <!-- Authors. -->
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  Byeongdo Lim*<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Jongmin Kim*<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Jihwan Kim<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://www.gabe-yhlee.com">Yonghyeon Lee</a><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://sites.google.com/robotics.snu.ac.kr/fcp/people/faculty?authuser=0">Frank C. Park</a><sup>1,3</sup>
+                </span>
+              </div>
+
+              <div class="is-size-6 publication-authors">
+                <span class="author-block"><sup>*</sup>Equal contribution</span>
+              </div>
+
+              <div class="is-size-6 publication-authors">
+                <span class="author-block"><sup>1</sup>Seoul National University,</span>
+                <span class="author-block"><sup>2</sup>Korea Institute For Advanced Study,</span>
+                <span class="author-block"><sup>3</sup>SAIGE</span>
+              </div>
+
+              <!-- Icons. -->
+              <div class="column has-text-centered">
+                <div class="publication-links">
+
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a href="https://openreview.net/pdf?id=5lSkn5v4LK"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                  <!-- Video Link. -->
+                  <span class="link-block">
+                    <a href="https://youtu.be/fxOveMwugo4?si=L1bmYNOMPbCHY1Cr"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fab fa-youtube"></i>
+                      </span>
+                      <span>Video</span>
+                    </a>
+                  </span>
+
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/bdlim99/EquiGraspFlow"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <!-- Poster Link. -->
+                  <span class="link-block">
+                    <a href="https://drive.google.com/file/d/1UTBoNDDT7FzHcXHSrFDA6x4v5hr3-g51/view?usp=sharing"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Poster</span>
+                    </a>
+                  </span>
+
+                </div>
+              </div>
+
+              <!-- Blank. -->
+              <div class="columns is-centered">
+                <div class="content">
+                  <h2 class="title is-3"></h2>
+                </div>            
+              </div>
+
+              <!-- TL;DR. -->
+              <div class="columns is-centered has-text-justified interpolation-panel">
+                <div class="column is-full-width">
+                  <p style="color: #333333; font-size: 1.25em;">
+                      <b>TL;DR</b>: We propose an SE(3)-equivariant grasp pose generative model by constructing a framework to learn SE(3)-invariant conditional distributions with Continuous Normalizing Flows.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Blank. -->
+              <div class="columns is-centered">
+                <div class="content">
+                  <h2 class="title is-3"></h2>
+                </div>            
+              </div>
+
+              <!-- Teaser Video. -->
+              <div class="columns is-centered interpolation-panel">
+                <div class="column has-text-left">
+                  <div class="content">
+                    <h2 class="title is-3">Superior/Consistent Grasping Performance</h2>
+                    <p>
+                      EquiGraspFlow significantly improves grasp success rates when objects are rotated, outperforming current methods. Moreover, our model consistently delivers strong performance across various object orientations.
+                    </p>
+                    <video id="sd" autoplay controls muted playsinline height="100%">
+                      <source src="./assets/videos/results.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Traditional methods for synthesizing 6-DoF grasp poses from 3D observations often rely on geometric heuristics, resulting in poor generalizability, limited grasp options, and higher failure rates.
+                Recently, data-driven methods have been proposed that use generative models to learn the distribution of grasp poses and generate diverse candidate poses.
+                The main drawback of these methods is that they fail to achieve SE(3)-equivariance, meaning that the generated grasp poses do not transform correctly with object rotations and translations.
+                In this paper, we propose <em>EquiGraspFlow</em>, a flow-based SE(3)-equivariant 6-DoF grasp pose generative model that can learn complex conditional distributions on the SE(3) manifold while guaranteeing SE(3)-equivariance.
+                Our model achieves the equivariance without relying on data augmentation, by using network architectures that guarantee it by construction.
+                Extensive experiments show that <em>EquiGraspFlow</em> accurately learns grasp pose distribution, achieves the SE(3)-equivariance, and significantly outperforms existing grasp pose generative models.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+
+        <!-- Introduction -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">SE(3)-Equivariant Grasp Pose Generation</h2>
+            <div class="content has-text-justified">
+              <p>
+                Recently, generative model-based approaches for 6-DoF grasping, such as 6-DOF GraspNet [<a href="#1">1</a>] and SE(3)-DiffusionFields [<a href="#2">2</a>], have been introduced.
+                However, the primary flaw with these existing grasp pose generative models is that they do not produce consistent grasp poses for rotated objects, leading to significant failure in some cases.
+                An ideal model should generate grasp poses that transform identically for rotated and translated objects.
+                Such models are considered <b>SE(3)-equivariant</b>.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/intro_1.jpg" width="325"/>
+              </div>
+              <p>
+                In this paper, we propose an <b>SE(3)-equivariant 6-DoF grasp pose generative model</b> that produces consistent grasp poses for rotated and translated objects.
+                Denoting an object's point cloud by \( \mathcal{P} \) and a grasp pose \( T \in \mathrm{SE}(3) \), a grasp pose generative model is represented by \( p(T | \mathcal{P}) \).
+                With \( T' \mathcal{P} \) denoting 3D transformation of the points in the point cloud \( \mathcal{P} \) by a transformation \( T' \), the SE(3)-equivariance of the grasp pose generative model is formulated as follows:
+                For a transformed point cloud, equivalently transformed grasp poses should have same likelihood.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/intro_2.png" width="375"/>
+              </div>
+              <p>
+                Therefore, the required condition for SE(3)-equivariant grasp pose generation is that the generative model should learn <b>SE(3)-invariant conditional distributions</b> described as follows:
+              </p>
+              <div class="column has-text-centered interpolation-panel">
+                \( p(T' T | T' \mathcal{P}) = p(T | \mathcal{P}) \)
+              </div>
+            </div>
+
+            <!-- Preliminaries. -->
+            <h2 class="title is-3">Conditional Continuous Normalizing Flows as Generative Model</h2>
+            <div class="content has-text-justified">
+              <p>
+                The conditional Continuous Normalizing Flows (CNFs) models a target conditional distribution \( q(T | \mathcal{P}) \) by transforming a prior conditional distribution \( p_0(T | \mathcal{P}) \) using the time-dependent conditional angular and linear velocity fields \( \omega_\theta(t, \mathcal{P}, T) \) and \( v_\phi(t, \mathcal{P}, T) \) where \( \theta \) and \( v \) are trainable parameters.
+                Denoting the transformed distribution at time \( t \) by \( p_t(T | \mathcal{P}) \), we train \( \omega_\theta \) and \( v_\phi \) so that \( p_1(T | \mathcal{P}) \) closely approximates \( q(T | \mathcal{P}) \).
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/process.png" width="775"/>
+              </div>
+              <p>
+                Generation process of \( T_\tau \sim p_\tau(T | \mathcal{P}) \) is as follows:
+                <ol>
+                  <li>Initial samples \( T_0 \sim p_o(T | \mathcal{P}) \).</li>
+                  <li>Transform the initial samples along the flow of the velocity fields \( \omega_\theta, v_\phi \) over \( t \in [0, \tau] \).</li>
+                </ol>
+                Decomposing pose \( T \) into \( R \in \mathrm{SO}(3) \) and \( x \in \mathbb{R}^3 \) parts, the flow is defined by the following ordinary differential equations (ODEs):
+              </p>
+              <div class="column has-text-centered interpolation-panel">
+                \( \dot{R} = [w_\theta(t, \mathcal{P}, T)] R, \quad \dot{x} = v_\phi(t, \mathcal{P}, T) \)
+              </div>
+              <p>
+                where \( [a] \) is an operation that maps a 3D vector \( a \) to a skew-symmetric matrix defined as \( [a]_{12} = -a_3, [a]_{13} = a_2, [a]_{23} = -a_1 \).
+                The following figure depicts a flow constructed from the velocity fields and ODEs.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/flow.png" width="350"/>
+              </div>
+            </div>
+
+            <!-- Method. -->
+            <h2 class="title is-3">EquiGraspFlow: SE(3)-Equivariant 6-DoF Grasp Pose Generative Flows</h2>
+            <h3 class="title is-4">Contribution 1: Framework to learn SE(3)-invariant conditional distributions</h3>
+            <div class="content has-text-justified">
+              <p>
+                We demonstrate that starting from an <b>SE(3)-invariant prior conditional distribution</b>, <b>SE(3)-equivariant conditional velocity fields</b> preserve <b>the invariance of transformed conditional distributions</b> over time.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/framework.png" width="375"/>
+              </div>
+              <p>
+                We utilize a prior conditional distribution \( p_0(T | \mathcal{P}) = p_0(R) p_0(x | \mathcal{P}) \) where \( p_0(R) \) is uniform over SO(3) and \( p_0(x | \mathcal{P}) \) is Gaussian in \( \mathbb{R}^3 \) with its mean located at the center of the point cloud \( \mathcal{P} \).
+                It is trivial to show that this prior conditional distribution is SE(3)-invariant.
+                The SE(3)-equivariance of the conditional velocity fields is decomposed into the equivariances on \( \mathbb{R}^3 \) and SO(3). The \( \mathbb{R}^3 \)-equivariance is achieved by subtracting the point mean from \( \mathcal{P} \) and \( x \).
+                The SO(3)-equivariance is achieved by adopting the Vector Neuron (VN) architectures [<a href="#3">3</a>], which are designed to be SO(3)-equivariant.
+                The structure of the velocity fields is depicted in the following figure.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/velocity_fields.png" width="600"/>
+              </div>
+            </div>
+            <h3 class="title is-4">Contribution 2: Equivariant lifting layer that converts scalars into 3D equivariant vectors</h3>
+            <div class="content has-text-justified">
+              <p>
+                However, directly using the VN architectures is not straightforward since they require lists of 3D vectors as input, while time \( t \) is a scalar.
+                Thus, we propose an equivariant lifting layer that converts any scalar variables into 3D equivariant vectors, so that the lifted time can be input into VNs while preserving equivariance.
+              </p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/lifting_layer.png" width="325"/>
+              </div>
+              <p>
+                The structure of the equivariant lifting layer is depicted in the above figure. The procedure of the lifting layer is as follows:
+                <ol>
+                  <li>VN-Linear produces an equivariant vector from representation \( z \) and pose \( T \).</li>
+                  <li>Scale the equivariant vector by time \( t \).</li>
+                </ol>
+              </p>
+            </div>
+
+            <!-- Experiments. -->
+            <h2 class="title is-3">Experiments</h2>
+            <h3 class="title is-4">Experiment Settings</h3>
+            <div class="content has-text-justified">
+              <p>
+                We utilize a dataset obtained from the Laptop, Mug, Bowl, and Pencil categories of the ACRONYM dataset [<a href="#4">4</a>].
+                For the data augmentation of the training dataset, we construct two strategies: <em>None</em> denotes no augmentation, and SO(3)-<em>aug</em> denotes augmenting by random arbitrary rotation in SO(3).
+                The evaluation metrics we utilize are Earth Mover's Distance (EMD) and grasp success rate.
+                The EMD measures the distance between the distributions of the generated and ground-truth grasp poses, defined by the minimum geodesic distance on the SE(3) manifold required to align the samples.
+                The grasp success rate is assessed by determining whether the Franka Panda gripper successfully holds the object following the grasping action.
+                Both metrics are first averaged across the rotations for each object, and then averaged across all objects.
+              </p>
+            </div>
+            <h3 class="title is-4">Simulation Experiment</h3>
+            <h4 class="title is-5">Superior performance in learning accurate grasp pose distribution and grasp success</h3>
+              <div class="column has-text-centered">
+                <img src="./assets/images/simulation_table.png" width="800"/>
+              </div>
+            <h4 class="title is-5">Consistent performance with respect to object rotations</h3>
+            <div class="multi">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <p>Zero standard deviation with respect to object rotations</p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/simulation_graph.png"/>
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <p>Identical metric values</p>
+              <div class="column has-text-centered">
+                <img src="./assets/images/simulation_visualization.png" width="400"/>
+              </div>
+            </div>
+            <h3 class="title is-4">Real-World Experiment</h3>
+            <h4 class="title is-5">Seamless applicability to real-world tasks</h4>
+            <div class="content has-text-justified">
+              <div class="column has-text-centered">
+                <img src="./assets/images/real-world_objects.png" width="400"/>
+              </div>
+              <div class="column has-text-centered">
+                <img src="./assets/images/real-world_table.png" width="800"/>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- References. -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-left">
+            <div class="columns is-left" style="margin-top: 40px;">
+              <div class="content">
+                <h2 class="title is-3">Related works</h2>
+                <span class="title is-size-6" style="color: #333333; font-weight: normal;">
+                  <ol>
+                    <li>
+                      <a id="1" href="https://openaccess.thecvf.com/content_ICCV_2019/papers/Mousavian_6-DOF_GraspNet_Variational_Grasp_Generation_for_Object_Manipulation_ICCV_2019_paper.pdf">6-DOF GraspNet: Variational Grasp Generation for Object Manipulation</a> (Mousavian <em>et al.</em>, ICCV 2019)
+                    </li>
+                    <li>
+                      <a id="2" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10161569&casa_token=LgQcn_3PlmIAAAAA:TeoTu5Qh7kx4ncb_JwBIqc6r5YjpmWr7YNTPSgIpSNYZ1g53OSzWlExhU08Mg6afYDtXbWxmlg&tag=1">SE(3)-DiffusionFields: Learning smooth cost functions for joint grasp and motion optimization through diffusion</a> (Urain <em>et al.</em>, ICRA 2023)
+                    </li>
+                    <li>
+                      <a id="3" href="https://openaccess.thecvf.com/content/ICCV2021/papers/Deng_Vector_Neurons_A_General_Framework_for_SO3-Equivariant_Networks_ICCV_2021_paper.pdf">Vector Neurons: A General Framework for SO(3)-Equivariant Networks</a> (Deng <em>et al.</em>, ICCV 2021)
+                    </li>
+                    <li>
+                      <a id="4" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9560844">ACRONYM: A Large-Scale Grasp Dataset Based on Simulation</a> (Eppner <em>et al.</em>, ICRA 2021)
+                    </li>
+                  </ol>
+                </span>
+              </div>      
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Citation. -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3">Citation</h2>
+        <pre><code>@inproceedings{lim2024equigraspflow,
+      title={EquiGraspFlow: SE(3)-Equivariant 6-DoF Grasp Pose Generative Flows},
+      author={Lim, Byeongdo and Kim, Jongmin and Kim, Jihwan and Lee, Yonghyeon and Park, Frank C},
+      booktitle={8th Annual Conference on Robot Learning},
+      year={2024}
+    }</code></pre>
+      </div>
+    </section>
+
+    <!-- Footer. -->
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            Website template modified from <a href="https://nerfies.github.io/">NeRFies</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
